@@ -3,13 +3,17 @@ import React, { useState, useEffect } from 'react'
 const PokemonAPI = () => {
     const [pokemonList, setPokemonList] = useState([]);
     const [display, setDisplay] = useState(false);
+    const [count, setCount] = useState(1);
 
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon?limit=807")
             .then(response => response.json())
-            .then(response => setPokemonList(response.results))
+            .then(response => {
+                setCount(count + 1)
+                setPokemonList(response.results)})
             .catch(error => console.log(error))
-    }, [])
+        console.log(`Fetch ${count} times`)
+    }, [display])
 
     return (
         <div>
