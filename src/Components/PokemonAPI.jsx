@@ -22,7 +22,7 @@ const PokemonAPI = () => {
     useEffect(() => {
         axios.get("https://pokeapi.co/api/v2/pokemon?limit=807")
             .then(response => setPokemonList(response.data.results))
-            .then(response => {
+            .then(() => {
                 if (display) {
                     setCount(count + 1);
                     console.log(`Fetch ${count} times`)
